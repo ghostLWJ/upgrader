@@ -53,6 +53,8 @@ class _UpgradeBase extends StatefulWidget {
   /// Provide an HTTP Client that can be replaced for mock testing.
   final http.Client client;
 
+  final String content;
+
   _UpgradeBase({
     Key key,
     this.appcastConfig,
@@ -68,6 +70,7 @@ class _UpgradeBase extends StatefulWidget {
     this.onUpdate,
     this.prompt,
     this.title,
+    this.content,
     this.client,
   }) : super(key: key) {
     if (this.appcastConfig != null) {
@@ -111,6 +114,9 @@ class _UpgradeBase extends StatefulWidget {
     }
     if (this.title != null) {
       Upgrader().title = this.title;
+    }
+    if (this.content != null) {
+      Upgrader().content = this.content;
     }
   }
 
@@ -264,6 +270,7 @@ class UpgradeAlert extends _UpgradeBase {
     BoolCallback onUpdate,
     String prompt,
     String title,
+    String content,
     http.Client client,
   }) : super(
           key: key,
@@ -280,6 +287,7 @@ class UpgradeAlert extends _UpgradeBase {
           onUpdate: onUpdate,
           prompt: prompt,
           title: title,
+          content: content,
           client: client,
         );
 

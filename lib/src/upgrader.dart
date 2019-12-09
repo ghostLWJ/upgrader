@@ -95,6 +95,8 @@ class Upgrader {
   String _userIgnoredVersion;
   bool _hasAlerted = false;
 
+  String content;
+
   factory Upgrader() {
     return _singleton;
   }
@@ -242,7 +244,11 @@ class Upgrader {
       if (shouldDisplayUpgrade()) {
         _displayed = true;
         Future.delayed(Duration(milliseconds: 0), () {
-          _showDialog(context: context, title: title, message: message());
+          _showDialog(
+              context: context,
+              title: title,
+              message:
+                  content != null && content.isNotEmpty ? content : message());
         });
       }
     }
